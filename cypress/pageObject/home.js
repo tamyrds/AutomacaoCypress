@@ -6,11 +6,6 @@ import { elem } from "../support/pages/elements";
 
 
 class home {
-    open(){
-        cy.viewport(1536, 960)
-        cy.visit(Cypress.env('URL'))
-        
-    }
 
     paraVoce(){
         cy.contains('Pra Você')
@@ -25,16 +20,17 @@ class home {
           .should('be.visible', 'Onde usar meu cartão VR?')
           .click()
         cy.wait(5000)
-        //cy.get('be.visible', elem.form)
+    }
+    mapa(){
         cy.get(elem.mapa)
             .trigger('mousedown', { which: 5 })
             .trigger('mousemove', { which: 5, x: 261, y: 0 })
             .trigger('mouseup')
             .click(320, 100)
             .wait(500);
-          
     }
 }
+
 
 
 export default new home
